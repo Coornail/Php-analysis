@@ -12,6 +12,7 @@ Dependencies:
  * rats (http://www.fortifysoftware.com/security-resources/rats.jsp) [optional]
  * Phpdoc (http://pear.php.net/PhpDocumentor) [optional]
  * Write permission to /tmp [if phpdoc is installed]
+ * php exec() permission [for pre-commit hook, it's enough only for the php-cli]
 
 The project is under development, and it was made for me personally, so it's
 not very general (working on it, as I said =).
