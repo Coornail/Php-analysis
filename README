@@ -1,0 +1,19 @@
+  PHP Syntax check and static analysis tools
+ 
+
+These scripts are helpers to always commit the best possible php code to your
+repository.
+
+I organize these tools to enforce best practices primarily for Drupal, but it
+can be used for any php project.
+
+Dependencies:
+ * rats (http://www.fortifysoftware.com/security-resources/rats.jsp)
+ * Phpdoc (http://pear.php.net/PhpDocumentor)
+ * Write permission to /tmp
+
+The project is under development, and it was made for me personally, so it's
+not very general (working on it as I said =).
+
+I appreciate every help I get with the repository, or ideas about what 
+else to include.
