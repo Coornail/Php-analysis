@@ -10,3 +10,7 @@ phpanalysis_path=~/phpanalysis
 export $phpanalysis_path
 
 Then you can use it as: ~/phpanalysis/phpcheck myphp.php
+
+To use it in a git repository as a precommit hook:
+ln -s ~/phpanalysis/pre-commit ~/mygitrepo/.git/
+
