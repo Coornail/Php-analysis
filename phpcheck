@@ -70,3 +70,14 @@ if [ "$?" -eq "0" ]; then
   echo -ne $NORMAL
 fi
 
+#coder check
+which drush >> /dev/null
+if [ "$?" -eq "0" ]; then
+  echo -ne $YELLOW
+  for i in $(find `dirname $1` -iname *.info); do
+    MODULE_NAME=`grep name $ | iawk '{ print $NF }'`
+    drush coder | grep "Coder found"
+  done
+  echo -ne $NORMAL
+fi
+
