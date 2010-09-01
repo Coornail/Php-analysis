@@ -1,5 +1,12 @@
 #!/usr/bin/php
 <?php
+/**
+ * @author Kornel Lugosi (Coornail)
+ *
+ * pre-comit git hook for check php files syntactically and analyze statically
+ * Originally from: http://phpadvent.org/2008/dont-commit-that-error-by-travis-swicegood (but reworked almost fully)
+ */
+
 
 $output = array();
 exec('git rev-parse --verify HEAD 2> /dev/null', $output, $return);
