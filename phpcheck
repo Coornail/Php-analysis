@@ -25,6 +25,9 @@ YELLOW="$ESC[${DULL};${FG_YELLOW}m"
 # BRIGHT TEXT
 BRIGHT_YELLOW="$ESC[${BRIGHT};${FG_YELLOW}m"
 
+# script paths
+DRUPAL_CODE_STYLE_SCRIPT=`dirname $0`/code-style.pl
+
 # Syntax check
 echo -ne $RED
 php -l $1 
@@ -47,7 +50,7 @@ fi
 
 # Code-style check
 echo -ne $GREEN
-~/shellscript/code-style.pl $1
+$DRUPAL_CODE_STYLE_SCRIPT $1
 echo -ne $NORMAL
 
 # PHPDoc check
