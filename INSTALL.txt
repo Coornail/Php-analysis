@@ -4,7 +4,7 @@ cd ~
 git clone git://github.com/Coornail/Php-analysis.git phpanalysis
 
 The scripts uses the phpanalysis_path enviromental variable to locate the
-helper scripts. So you propably want to add it to your .bashrc:
+helper scripts. So you probably want to add it to your .bashrc:
 
 phpanalysis_path=~/phpanalysis
 export $phpanalysis_path
