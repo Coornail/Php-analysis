@@ -8,7 +8,7 @@ I organize these tools to enforce best practices primarily for Drupal, but it
 can be used for any php project.
 
 Dependencies:
- * rats (http://www.fortifysoftware.com/security-resources/rats.jsp)
+ * rats (http://www.fortifysoftware.com/security-resources/rats.jsp) [optional]
  * Phpdoc (http://pear.php.net/PhpDocumentor)
  * Write permission to /tmp
 
