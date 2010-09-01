@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Main script that checks for php syntax and coding style
+# The scripts exits with non-zero status if the php file has syntax error
+#
+# The only parameter is one php file
+
 # colors
 DULL=0
 BRIGHT=1
