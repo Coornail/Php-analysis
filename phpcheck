@@ -39,9 +39,12 @@ echo -ne $NORMAL
 
 
 #echo "[+] Rats check"
-echo -ne $BRIGHT_YELLOW
-rats -w3 --resultsonly $1
-echo -ne $NORMAL
+which rats >> /dev/null
+if [ "$?" -eq "0" ]; then
+  echo -ne $BRIGHT_YELLOW
+  rats -w3 --resultsonly $1
+  echo -ne $NORMAL
+fi
 
 #echo "[+] Code-style check"
 echo -ne $GREEN
