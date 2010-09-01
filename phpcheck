@@ -27,9 +27,9 @@ BRIGHT_YELLOW="$ESC[${BRIGHT};${FG_YELLOW}m"
 
 #echo "[+] Syntax check"
 echo -ne $RED
-#php -l $1 | grep -v "No syntax errors"
 php -l $1 
 
+# exit if there's a syntax error
 if [ "$?" -ne "0" ]; then
   echo -ne $NORMAL
   exit 1
@@ -48,7 +48,6 @@ echo -ne $GREEN
 ~/shellscript/code-style.pl $1
 echo -ne $NORMAL
 
-
 #echo "[+] PHPDoc check"
 phpdoc -t /tmp/phpdoc/ -q -f $1
 echo -ne $YELLOW
@@ -56,3 +55,4 @@ cat /tmp/phpdoc/errors.html | grep "Error on" | sed -e 's/<[^>]*>//g'
 echo -ne $GREEN
 cat /tmp/phpdoc/errors.html | grep "Warning on" | sed -e 's/<[^>]*>//g'
 echo -ne $NORMAL
+
