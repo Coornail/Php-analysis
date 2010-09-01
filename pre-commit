@@ -5,6 +5,7 @@
  *
  * pre-comit git hook for check php files syntactically and analyze statically
  * Originally from: http://phpadvent.org/2008/dont-commit-that-error-by-travis-swicegood (but reworked almost fully)
+ * It uses the phpanalysis_path enviromental variable to locate the helper scripts.
  */
 
 define('EMPTY_COMMIT', '4b825dc642cb6eb9a060e54bf8d69288fbee4904');
@@ -15,13 +16,16 @@ $against = ($return == 0) ? 'HEAD' : EMPTY_COMMIT;
 
 exec("git diff-index --cached --name-only {$against}", $output);
 
+// Determine shellscript path
+$phpcheck_path = (isset($_ENV['phpanalysis_path'])) ? $_ENV['phpanalysis_path'] : '.';
+
 foreach ($output as $file) {
   if (!preg_match(FILENAME_PATTERN, $file)) {
     continue;
   }
 
   echo '[*] :: '. escapeshellarg($file) . "\n";
-  exec('~/shellscript/phpcheck '. escapeshellarg($file), $output, $exit_status);
+  exec($phpcheck_path. '/phpcheck '. escapeshellarg($file), $output, $exit_status);
   foreach ($output as $line) {
     echo $line ."\n";
   }
