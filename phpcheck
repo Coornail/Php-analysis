@@ -1,0 +1,58 @@
+#!/bin/bash
+
+DULL=0
+BRIGHT=1
+
+FG_RED=31
+FG_GREEN=32
+FG_YELLOW=33
+
+FG_NULL=00
+
+BG_RED=41
+BG_GREEN=42
+BG_YELLOW=43
+
+BG_NULL=00
+
+ESC="\033"
+NORMAL="$ESC[m"
+RESET="\[$ESC[${DULL};${FG_WHITE};${BG_NULL}m\]"
+RED="$ESC[${DULL};${FG_RED}m"
+GREEN="$ESC[${DULL};${FG_GREEN}m"
+YELLOW="$ESC[${DULL};${FG_YELLOW}m"
+
+# BRIGHT TEXT
+BRIGHT_YELLOW="$ESC[${BRIGHT};${FG_YELLOW}m"
+
+#echo "[+] Syntax check"
+echo -ne $RED
+#php -l $1 | grep -v "No syntax errors"
+php -l $1 
+
+if [ "$?" -ne "0" ]; then
+  echo -ne $NORMAL
+  exit 1
+fi
+
+echo -ne $NORMAL
+
+
+#echo "[+] Rats check"
+echo -ne $BRIGHT_YELLOW
+rats -w3 --resultsonly $1
+echo -ne $NORMAL
+
+#echo "[+] Code-style check"
+echo -ne $GREEN
+~/shellscript/code-style.pl $1
+echo -ne $NORMAL
+
+
+#echo "[+] PHPDoc check"
+phpdoc -t /tmp/phpdoc/ -q -f $1
+echo -ne $YELLOW
+cat /tmp/phpdoc/errors.html | grep "Error on" | sed -e 's/<[^>]*>//g'
+echo -ne $GREEN
+cat /tmp/phpdoc/errors.html | grep "Warning on" | sed -e 's/<[^>]*>//g'
+echo -ne $NORMAL
