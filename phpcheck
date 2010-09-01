@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# colors
 DULL=0
 BRIGHT=1
 
