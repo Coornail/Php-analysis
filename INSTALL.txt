@@ -1,0 +1,12 @@
+Use git to clone the scripts to anywhere in your home directory:
+
+cd ~
+git clone git://github.com/Coornail/Php-analysis.git phpanalysis
+
+The scripts uses the phpanalysis_path enviromental variable to locate the
+helper scripts. So you propably want to add it to your .bashrc:
+
+phpanalysis_path=~/phpanalysis
+export $phpanalysis_path
+
+Then you can use it as: ~/phpanalysis/phpcheck myphp.php
