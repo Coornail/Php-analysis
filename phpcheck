@@ -74,9 +74,9 @@ fi
 DRUSH=`alias | /usr/bin/which -i drush | tail -n1` # checks for aliases also
 if [ "$?" -eq "0" ]; then
   echo -ne $YELLOW
-  for i in $(find `dirname $1` -iname *.info); do
-    MODULE_NAME=`grep name $ | iawk '{ print $NF }'`
-    drush coder | grep "Coder found"
+  for i in $(find `dirname $1` -iname *.module); do # try guessing the module name from the .module files
+    MODULE_NAME=$(basename $i .module)
+    $DRUSH coder $MODULE_NAME
   done
   echo -ne $NORMAL
 fi
