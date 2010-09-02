@@ -71,7 +71,7 @@ if [ "$?" -eq "0" ]; then
 fi
 
 #coder check
-which drush >> /dev/null
+DRUSH=`alias | /usr/bin/which -i drush | tail -n1` # checks for aliases also
 if [ "$?" -eq "0" ]; then
   echo -ne $YELLOW
   for i in $(find `dirname $1` -iname *.info); do
