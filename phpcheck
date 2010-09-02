@@ -78,7 +78,7 @@ if [ "$?" -eq "0" ]; then
   echo -ne $YELLOW
   for i in $(find `dirname $1` -iname *.module); do # try guessing the module name from the .module files
     MODULE_NAME=$(basename $i .module)
-    $DRUSH coder $MODULE_NAME
+    $DRUSH coder $MODULE_NAME | grep -v "The drush command 'coder' could not be found." # if coder is not found, show no error
   done
   echo -ne $NORMAL
 fi
