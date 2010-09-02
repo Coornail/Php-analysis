@@ -63,10 +63,12 @@ echo -ne $NORMAL
 which phpdoc >> /dev/null
 if [ "$?" -eq "0" ]; then
   phpdoc -t /tmp/phpdoc/ -q -f $1
-  echo -ne $YELLOW
-  cat /tmp/phpdoc/errors.html | grep "Error on" | sed -e 's/<[^>]*>//g'
-  echo -ne $GREEN
-  cat /tmp/phpdoc/errors.html | grep "Warning on" | sed -e 's/<[^>]*>//g'
-  echo -ne $NORMAL
+  if [ -f "/tmp/phpdoc/errors.html" ]; then
+    echo -ne $YELLOW
+    cat /tmp/phpdoc/errors.html | grep "Error on" | sed -e 's/<[^>]*>//g'
+    echo -ne $GREEN
+    cat /tmp/phpdoc/errors.html | grep "Warning on" | sed -e 's/<[^>]*>//g'
+    echo -ne $NORMAL
+  fi
 fi
 
