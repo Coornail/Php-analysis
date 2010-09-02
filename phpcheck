@@ -34,6 +34,13 @@ BRIGHT_YELLOW="$ESC[${BRIGHT};${FG_YELLOW}m"
 # script paths
 DRUPAL_CODE_STYLE_SCRIPT=`dirname $0`/code-style.pl
 
+# check if there's an argument
+if [ $# -eq 0 ]; then
+  echo "Usage:"
+  echo "  $0 [php file]"
+  exit 1
+fi
+
 # Syntax check
 echo -ne $RED
 php -l $1 
